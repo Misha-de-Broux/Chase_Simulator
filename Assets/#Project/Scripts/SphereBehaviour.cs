@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class SphereBehaviour : MonoBehaviour
@@ -21,5 +23,10 @@ public class SphereBehaviour : MonoBehaviour
     void Update()
     {
         _agent.SetDestination(_target.position);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        SceneManager.LoadScene("LoseScreenScene");
     }
 }
